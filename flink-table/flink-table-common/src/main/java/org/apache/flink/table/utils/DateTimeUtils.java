@@ -755,6 +755,11 @@ public class DateTimeUtils {
         }
     }
 
+    public static String formatDateString(Date date, String toFormat) {
+        SimpleDateFormat toFormatter = FORMATTER_CACHE.get(toFormat);
+        return toFormatter.format(date);
+    }
+
     public static String formatTimestampString(String dateStr, String toFormat, TimeZone tz) {
         // use yyyy-MM-dd HH:mm:ss as default
         return formatTimestampString(dateStr, TIMESTAMP_FORMAT_STRING, toFormat, tz);

@@ -142,6 +142,10 @@ public final class SpecificInputTypeStrategies {
                                     ((KeyValueDataType) callContext.getArgumentDataTypes().get(0))
                                             .getValueDataType()));
 
+    /** Type strategy specific for {@link BuiltInFunctionDefinitions#DATE_FORMAT}. */
+    public static final InputTypeStrategy DATE_FORMAT =
+            new DateFormatInputTypeStrategy();
+
     /** Type strategy specific for {@link BuiltInFunctionDefinitions#MAP_FROM_ARRAYS}. */
     public static final TypeStrategy ARRAYS_FOR_MAP =
             callContext ->

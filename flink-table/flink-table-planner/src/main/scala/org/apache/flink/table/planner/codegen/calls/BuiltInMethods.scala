@@ -24,12 +24,10 @@ import org.apache.flink.table.functions.SqlLikeUtils
 import org.apache.flink.table.runtime.functions._
 import org.apache.flink.table.utils.DateTimeUtils
 import org.apache.flink.table.utils.DateTimeUtils.TimeUnitRange
-
 import org.apache.calcite.linq4j.tree.Types
-
 import java.lang.{Byte => JByte, Integer => JInteger, Long => JLong, Short => JShort}
 import java.lang.reflect.Method
-import java.util.TimeZone
+import java.util.{Date, TimeZone}
 
 object BuiltInMethods {
 
@@ -288,6 +286,12 @@ object BuiltInMethods {
     classOf[DateTimeUtils],
     "formatTimestamp",
     classOf[TimestampData],
+    classOf[String])
+
+  val FORMAT_DATE_STRING_FORMAT_STRING_STRING = Types.lookupMethod(
+    classOf[DateTimeUtils],
+    "formatDateString",
+    classOf[Date],
     classOf[String])
 
   val FORMAT_TIMESTAMP_DATA_WITH_TIME_ZONE = Types.lookupMethod(
