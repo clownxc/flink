@@ -18,7 +18,6 @@
 
 package org.apache.flink.table.types.inference.strategies;
 
-import org.apache.flink.table.expressions.TimeIntervalUnit;
 import org.apache.flink.table.functions.FunctionDefinition;
 import org.apache.flink.table.types.DataType;
 import org.apache.flink.table.types.inference.ArgumentCount;
@@ -49,9 +48,9 @@ public class DateFormatInputTypeStrategy implements InputTypeStrategy {
             CallContext callContext, boolean throwOnFailure) {
         final List<DataType> argumentDataTypes = callContext.getArgumentDataTypes();
         final LogicalType firstType = argumentDataTypes.get(0).getLogicalType();
-        if(firstType.is(LogicalTypeRoot.DATE) || firstType.isAnyOf(
-                LogicalTypeFamily.CHARACTER_STRING,
-                LogicalTypeFamily.TIMESTAMP)) {
+        if (firstType.is(LogicalTypeRoot.DATE)
+                || firstType.isAnyOf(
+                        LogicalTypeFamily.CHARACTER_STRING, LogicalTypeFamily.TIMESTAMP)) {
             return callContext.fail(
                     throwOnFailure,
                     "EXTRACT requires 1st argument to be a date、string or timestamp type, "
